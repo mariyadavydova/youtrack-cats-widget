@@ -1,0 +1,8 @@
+{
+  "key": "cat-widget",
+  "version": "0.0.1",
+  "name": "Cat Widget",
+  "description": "Widget contains a GIF with a cat.",
+  "author": "Mariya Davydova <mrs.mariya.davydova@gmail.com>",
+  "homeUrl": "https://github.com/mariyadavydova/youtrack-cats-widget"
+}
