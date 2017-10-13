@@ -7,6 +7,8 @@ var DEFAULT_CAT_ID = "purr";
 var DEFAULT_TITLE = "Keep calm and purrrrr...";
 
 function renderCat(catId) {
+  document.getElementById('catSettings').hidden = true;
+
   if (catId === 'random') {
     catId = LIST_OF_CAT_IDS[Math.floor(Math.random() * LIST_OF_CAT_IDS.length)];
   }
@@ -20,19 +22,20 @@ function renderCat(catId) {
 function renderSelector(dashboardAPI, catId, title) {
   var options = "";
   LIST_OF_CAT_IDS.forEach(function(id) {
-    var name = id.charAt(0).toUpperCase() + id.slice(1) + " Cat";
+    var name = id.charAt(0).toUpperCase() + id.slice(1);
     options += "<option value='" + id + "'>" + name + "</option>";
   });
 
-  var container = document.getElementById('cat');
+  var container = document.getElementById('catSettings');
+  container.hidden = false;
   container.innerHTML =
-    "<div><input type='text' id='title' class='title'></div>" +
+    "<div><input type='text' id='title' class='catTitle'></div>" +
     "<div><select id='catSelector' class='catSelector'>" +
       "<option value='random'>Random Cat</option>" +
       options +
     "</select></div>" +
-    "<div><input type='button' value='Save' id='save' class='button'>" +
-    "<input type='button' value='Cancel' id='cancel' class='button'></div>";
+    "<div><input type='button' value='Save' id='save' class='catButton'>" +
+    "<input type='button' value='Cancel' id='cancel' class='catButton'></div>";
 
   var selector = document.getElementById('catSelector');
   selector.value = catId;

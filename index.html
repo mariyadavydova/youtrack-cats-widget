@@ -8,25 +8,40 @@
   <script src="https://unpkg.com/hub-dashboard-addons@latest"></script>
 
   <style>
+    html {
+      height: 100%
+    }
+    .catBody {
+      height: calc(100% - 32px);
+    }
+    .catDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+    .catImage {
+      height: auto;
+      width: 90%;
+      display: block;
+    }
     .catSelector {
       width: 100%;
       margin-top: 10px;
     }
-    .title {
+    .catTitle {
       width: 100%;
       margin-top: 10px;
     }
-    .button {
+    .catButton {
       margin-right: 10px;
       margin-top: 10px;
     }
-    .catImage {
-      width: 80%;
-      max-height: 100%;
-    }
   </style>
 </head>
-<body>
+<body class="catBody" id="catBody">
+    <div id="catSettings" hidden="true"></div>
     <div id="cat" class="catDiv">Loading...</div>
     <script src="index.js"></script>
 </body>
