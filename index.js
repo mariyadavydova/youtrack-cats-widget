@@ -29,7 +29,7 @@ function renderSelector(dashboardAPI, catId, title) {
   var container = document.getElementById('catSettings');
   container.hidden = false;
   container.innerHTML =
-    "<div><input type='text' id='title' class='catTitle'></div>" +
+    "<div><input type='text' id='title' class='catTitle' placeholder='Widget title'></div>" +
     "<div><select id='catSelector' class='catSelector'>" +
       "<option value='random'>Random Cat</option>" +
       options +
