@@ -1,6 +1,6 @@
 {
   "key": "cat-widget",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "name": "Cat Widget",
   "description": "Widget contains a GIF with a cat.",
   "author": "Mariya Davydova <mrs.mariya.davydova@gmail.com>",
