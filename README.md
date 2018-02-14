@@ -4,7 +4,7 @@ This YouTrack Widget allows you to add one or several cats from
 [Cat Power Animated](http://iconka.com/en/downloads/cat-power-animated/) collection
 to your YouTrack Dashboard. 
 
-Requires YouTrack 2017.3 or higher. 
+Requires YouTrack/Hub/Upsource 2018.1 or higher. 
 
 # Developing
 
