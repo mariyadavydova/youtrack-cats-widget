@@ -4,7 +4,7 @@ var LIST_OF_CAT_IDS = ["purr", "walk", "acrobat", "kittens",
                     "love", "fly", "popcorn", "drink"];
 
 var DEFAULT_CAT_ID = "purr";
-var DEFAULT_TITLE = "Keep calm and purrrrr...";
+var DEFAULT_TITLE = "Cats";
 
 function renderCat(catId) {
   document.getElementById('catSettings').hidden = true;
@@ -39,6 +39,14 @@ function renderSelector(dashboardAPI, catId, title) {
 
   var selector = document.getElementById('catSelector');
   selector.value = catId;
+  selector.onchange = function() {
+    var titleInput = document.getElementById('title');
+    title = titleInput.value;
+    var catId = selector.options[selector.selectedIndex].value;
+    renderCat(catId);
+    renderSelector(dashboardAPI, catId, title);
+  };
+  
   var titleInput = document.getElementById('title');
   titleInput.value = title;
 
@@ -60,10 +68,7 @@ function renderSelector(dashboardAPI, catId, title) {
   var buttonCancel = document.getElementById('cancel');
   buttonCancel.onclick = function() {
     dashboardAPI.exitConfigMode();
-    var selector = document.getElementById('catSelector');
-    var catId = selector.options[selector.selectedIndex].value;
-    dashboardAPI.exitConfigMode();
-    renderCat(catId);
+    drawCatFromConfig(dashboardAPI);
   };
 }
 
