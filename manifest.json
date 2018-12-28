@@ -1,8 +1,8 @@
 {
   "key": "cats-widget",
-  "name": "Cats",
-  "version": "1.1.0",
-  "description": "GIFs with funny fluffy pets for your Dashboard",
+  "name": "Pets",
+  "version": "2.0.0",
+  "description": "GIFs with funny cats and dogs for your Dashboard",
   "author": "Mariya Davydova <mrs.mariya.davydova@gmail.com>",
   "homeUrl": "https://github.com/mariyadavydova/youtrack-cats-widget",
   "dependencies": {
