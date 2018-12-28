@@ -1,3 +1,6 @@
 .idea
 *iml
 *zip
+*~
+node_modules/
+package-lock.json

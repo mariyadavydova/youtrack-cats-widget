@@ -1,18 +1,16 @@
 {
-  "key": "cat-widget",
-  "version": "1.0.0",
-  "name": "Cats Widget",
-  "description": "GIFs with funny fluffy cats for your Dashboard!",
+  "key": "cats-widget",
+  "name": "Cats",
+  "version": "1.1.0",
+  "description": "GIFs with funny fluffy pets for your Dashboard",
   "author": "Mariya Davydova <mrs.mariya.davydova@gmail.com>",
   "homeUrl": "https://github.com/mariyadavydova/youtrack-cats-widget",
-  "iconUrl": "images/cat_purr.png",
   "dependencies": {
-    "Hub": ">=2018.1"
+    "Hub": ">=2018.2"
   },
   "products": {
-    "Hub": ">=2018.1",
-    "Upsource": ">=2018.1",
-    "YouTrack": ">=2018.1"
+    "Hub": "^2018.2",
+    "YouTrack": "^2018.2"
   },
   "view": {
     "fadeOut": false,
