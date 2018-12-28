@@ -2,9 +2,19 @@
 
 @value unit from "@jetbrains/ring-ui/components/global/global.css";
 
+html {
+  height: 100%
+}
+
+:global(#app-container) {
+  height: 100%;
+  width: 100%;
+}
+
 :global(.widget-body) {
   margin: 0;
   padding: calc(unit * 2);
+  height: calc(100% - 32px);
 
   background: var(--ring-content-background-color);
 

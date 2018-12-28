@@ -38,9 +38,7 @@ class Widget extends Component {
     const {registerWidgetApi, dashboardApi} = props;
 
     this.state = {
-      isConfiguring: false,
-      catId: DEFAULT_CAT_ID,
-      title: DEFAULT_TITLE
+      isConfiguring: false
     };
 
     registerWidgetApi({
@@ -53,6 +51,8 @@ class Widget extends Component {
   initialize(dashboardApi) {
     dashboardApi.readConfig().then(config => {
       if (!config) {
+        this.setState({catId: DEFAULT_CAT_ID,
+                       title: DEFAULT_TITLE})
         return;
       }
       this.setState({catId: config.catId || DEFAULT_CAT_ID,
@@ -79,14 +79,15 @@ class Widget extends Component {
 
   renderConfiguration() {
     const {isConfiguring, catId, title} = this.state;
+    const cat = CAT_IDS[0];
 
     return (
       <div>
         <Select
-      data={CAT_IDS}
-      selected={catId}
-      onChange={this.changeCatId}
-      label="Choose cat!"
+          data={CAT_IDS}
+          selected={cat}
+          onChange={this.changeCatId}
+          label="Choose cat!"
         />
         <Panel>
           <Button primary onClick={this.saveConfig}>{'Save'}</Button>
@@ -110,9 +111,9 @@ class Widget extends Component {
     const url = 'images\\' + catId + '.gif';
 
     return (
-        <div className='cat-image'>
-          <img src={url}></img>
-        </div>
+      <div className={styles['cat-image']}>
+        <img className={styles['cat-image']} src={url}></img>
+      </div>
     );
   }
 }
