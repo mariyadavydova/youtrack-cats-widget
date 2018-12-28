@@ -14,27 +14,53 @@ import 'file-loader?name=[name].[ext]!../../manifest.json';
 import styles from './app.css';
 
 var PET_IDS = [
-  {'label':'Random cat', 'key':'random-cat'},
-  {'label':'Cats',     'key':'cats',   'rgItemType':List.ListProps.Type.TITLE},
-  {'label':'Purr',     'key':'purr'},
-  {'label':'Walk',     'key':'walk'},
-  {'label':'Acrobat',  'key':'acrobat'},
-  {'label':'Kittens',  'key':'kittens'},
-  {'label':'Burp',     'key':'burp'},
-  {'label':'Sleepy',   'key':'sleepy'},
-  {'label':'Facepalm', 'key':'facepalm'},
-  {'label':'Meal',     'key':'meal'},
-  {'label':'Banjo',    'key':'banjo'},
-  {'label':'Groom',    'key':'groom'},
-  {'label':'Gift',     'key':'gift'},
-  {'label':'Knead',    'key':'knead'},
-  {'label':'Love',     'key':'love'},
-  {'label':'Fly',      'key':'fly'},
-  {'label':'Popcorn',  'key':'popcorn'},
-  {'label':'Drink',    'key':'drink'}
+  {'label':'Random cat (animated)', 'key':'random-cat'},
+  {'label':'Random dog',            'key':'random-dog'},
+  {'label':'Cats (animated)', 'key':'cats', 'rgItemType':List.ListProps.Type.TITLE},
+  {'label':'Purr',     'key':'cats\\purr.gif'},
+  {'label':'Walk',     'key':'cats\\walk.gif'},
+  {'label':'Acrobat',  'key':'cats\\acrobat.gif'},
+  {'label':'Kittens',  'key':'cats\\kittens.gif'},
+  {'label':'Burp',     'key':'cats\\burp.gif'},
+  {'label':'Sleepy',   'key':'cats\\sleepy.gif'},
+  {'label':'Facepalm', 'key':'cats\\facepalm.gif'},
+  {'label':'Meal',     'key':'cats\\meal.gif'},
+  {'label':'Banjo',    'key':'cats\\banjo.gif'},
+  {'label':'Groom',    'key':'cats\\groom.gif'},
+  {'label':'Gift',     'key':'cats\\gift.gif'},
+  {'label':'Knead',    'key':'cats\\knead.gif'},
+  {'label':'Love',     'key':'cats\\love.gif'},
+  {'label':'Fly',      'key':'cats\\fly.gif'},
+  {'label':'Popcorn',  'key':'cats\\popcorn.gif'},
+  {'label':'Drink',    'key':'cats\\drink.gif'},
+  {'label':'Dogs', 'key':'dogs','rgItemType':List.ListProps.Type.TITLE},
+  {'label':'Ball',      'key': 'dogs\\ball.png'},
+  {'label':'Barbell',   'key': 'dogs\\barbell.png'},
+  {'label':'Bark',      'key': 'dogs\\bark.png'},
+  {'label':'Birthday',  'key': 'dogs\\birthday.png'},
+  {'label':'Bows',      'key': 'dogs\\bows.png'},
+  {'label':'Boxer',     'key': 'dogs\\boxer.png'},
+  {'label':'Chihuahua', 'key': 'dogs\\chihuahua_bone.png'},
+  {'label':'Cocktail',  'key': 'dogs\\cocktail.png'},
+  {'label':'Corgi',     'key': 'dogs\\corgi.png'},
+  {'label':'Dachshund', 'key': 'dogs\\dachshund.png'},
+  {'label':'Dalmatian', 'key': 'dogs\\dalmatian.png'},
+  {'label':'Einstein',  'key': 'dogs\\einstein.png'},
+  {'label':'Fitness',   'key': 'dogs\\fitness.png'},
+  {'label':'Haski',     'key': 'dogs\\haski.png'},
+  {'label':'Hulahoop',  'key': 'dogs\\hulahoop.png'},
+  {'label':'Labrador',  'key': 'dogs\\labrador.png'},
+  {'label':'Pilot',     'key': 'dogs\\pilot.png'},
+  {'label':'Poodle',    'key': 'dogs\\poodle.png'},
+  {'label':'Pug',       'key': 'dogs\\pug.png'},
+  {'label':'Rich',      'key': 'dogs\\rich.png'},
+  {'label':'Russel',    'key': 'dogs\\russel.png'},
+  {'label':'Sharpei',   'key': 'dogs\\sharpei.png'},
+  {'label':'Shepherd',  'key': 'dogs\\shepherd.png'},
+  {'label':'Stbernard', 'key': 'dogs\\stbernard.png'}
 ];
 
-var DEFAULT_PET_ID = 'purr';
+var DEFAULT_PET_ID = 'cats\\purr.gif';
 var DEFAULT_RANDOM = 'none'
 var DEFAULT_TITLE  = 'Pets';
 
@@ -86,12 +112,19 @@ class Widget extends Component {
   }
 
   loadConfig = config => {
+    // Smooth migration from version 1.0.0
     var random = 'none';
     var petId = config.petId || config.catId || DEFAULT_PET_ID;
     if (petId === 'random' || petId === 'random-cat') {
       random = 'random-cat';
-      // cats are from 2 to 17
-      petId = PET_IDS[Math.floor(Math.random() * 16) + 2].key;
+      // cats are from 3 to 18
+      petId = PET_IDS[Math.floor(Math.random() * 16) + 3].key;
+    } else if (petId === 'random-dog') {
+      random = 'random-dog';
+      // cats are from 20 to 43
+      petId = PET_IDS[Math.floor(Math.random() * 24) + 20].key;
+    } else if (petId.indexOf('.') === -1) {
+      petId = 'cats\\' + petId + '.gif';
     }
     var title = config.title || DEFAULT_TITLE;
     this.setState({petId, random, title});
@@ -100,7 +133,7 @@ class Widget extends Component {
   saveConfig = async () => {
     const {petId, random, title} = this.state;
     var configPetId = petId;
-    if (random === 'random-cat') {
+    if (random === 'random-cat' || random === 'random-dog') {
       configPetId = random;
     }
     await this.props.dashboardApi.storeConfig({petId: configPetId, title});
@@ -119,7 +152,13 @@ class Widget extends Component {
     if (random === 'random-cat') {
       var newId = petId;
       while (newId === petId) {
-        newId = PET_IDS[Math.floor(Math.random() * 16) + 2].key;
+        newId = PET_IDS[Math.floor(Math.random() * 16) + 3].key;
+      }
+      petId = newId
+    } else if (random === 'random-dog') {
+      var newId = petId;
+      while (newId === petId) {
+        newId = PET_IDS[Math.floor(Math.random() * 24) + 20].key;
       }
       petId = newId
     }
@@ -128,7 +167,7 @@ class Widget extends Component {
 
   changePetId = pet => {
     var petId = pet.key;
-    if (petId === 'random-cat') {
+    if (petId === 'random-cat' || petId === 'random-dog') {
       var random = petId;
       this.setState({random})
       this.updateRandomPet()
@@ -166,7 +205,7 @@ class Widget extends Component {
       return this.renderConfiguration();
     }
 
-    const url = 'images\\' + petId + '.gif';
+    const url = 'images\\' + petId;
 
     return (
       <div className={styles['pet-image']}>
