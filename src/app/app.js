@@ -187,10 +187,10 @@ class Widget extends Component {
     var idsWithIcons = [];
     PET_IDS.forEach(item => {
       idsWithIcons.push({
-        label: item.label,
-        key: item.key,
-        icon: item.key.startsWith('images') ? item.key : '',
-        rgItemType: item.rgItemType ? item.rgItemType : List.ListProps.Type.ITEM
+        'label':      item.label,
+        'key':        item.key,
+        'avatar':     item.key.startsWith('images') ? item.key : '',
+        'rgItemType': item.rgItemType ? item.rgItemType : List.ListProps.Type.ITEM
       });
     })
     var pet = PET_IDS.find((id) => id.key === random) ||
