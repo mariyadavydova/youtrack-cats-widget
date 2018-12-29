@@ -1,6 +1,6 @@
 {
-  "name": "pets",
-  "version": "1.0.0",
+  "name": "cats-widget",
+  "version": "1.1.0",
   "private": true,
   "config": {
     "components": "./src",
@@ -14,7 +14,7 @@
     "stylelint": "stylelint --ignore-path .gitignore **/*.css",
     "ci-test": "npm run lint && xvfb-maybe karma start --teamcity",
     "start": "webpack-dev-server -d --history-api-fallback --inline --hot --colors --port 9010",
-    "dist": "npm run build && rm -f pets.zip && zip -r -j pets.zip ./dist"
+    "dist": "npm run build && rm -f cats-widget.zip && cp -r ./images ./dist/images && cd dist && zip -r ../cats-widget.zip ."
   },
   "babel": {
     "presets": [
