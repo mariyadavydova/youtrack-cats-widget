@@ -2,7 +2,7 @@ import DashboardAddons from 'hub-dashboard-addons';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {render} from 'react-dom';
-import Text from '@jetbrains/ring-ui/components/text/text';
+import Input, {Size as InputSize} from '@jetbrains/ring-ui/components/input/input';
 import Select from '@jetbrains/ring-ui/components/select/select';
 import List from '@jetbrains/ring-ui/components/list/list';
 import Panel from '@jetbrains/ring-ui/components/panel/panel';
@@ -17,50 +17,50 @@ var PET_IDS = [
   {'label':'Random cat (animated)', 'key':'random-cat'},
   {'label':'Random dog',            'key':'random-dog'},
   {'label':'Cats (animated)', 'key':'cats', 'rgItemType':List.ListProps.Type.TITLE},
-  {'label':'Purr',     'key':'cats\\purr.gif'},
-  {'label':'Walk',     'key':'cats\\walk.gif'},
-  {'label':'Acrobat',  'key':'cats\\acrobat.gif'},
-  {'label':'Kittens',  'key':'cats\\kittens.gif'},
-  {'label':'Burp',     'key':'cats\\burp.gif'},
-  {'label':'Sleepy',   'key':'cats\\sleepy.gif'},
-  {'label':'Facepalm', 'key':'cats\\facepalm.gif'},
-  {'label':'Meal',     'key':'cats\\meal.gif'},
-  {'label':'Banjo',    'key':'cats\\banjo.gif'},
-  {'label':'Groom',    'key':'cats\\groom.gif'},
-  {'label':'Gift',     'key':'cats\\gift.gif'},
-  {'label':'Knead',    'key':'cats\\knead.gif'},
-  {'label':'Love',     'key':'cats\\love.gif'},
-  {'label':'Fly',      'key':'cats\\fly.gif'},
-  {'label':'Popcorn',  'key':'cats\\popcorn.gif'},
-  {'label':'Drink',    'key':'cats\\drink.gif'},
+  {'label':'Purr',     'key':'images/cats/purr.gif'},
+  {'label':'Walk',     'key':'images/cats/walk.gif'},
+  {'label':'Acrobat',  'key':'images/cats/acrobat.gif'},
+  {'label':'Kittens',  'key':'images/cats/kittens.gif'},
+  {'label':'Burp',     'key':'images/cats/burp.gif'},
+  {'label':'Sleepy',   'key':'images/cats/sleepy.gif'},
+  {'label':'Facepalm', 'key':'images/cats/facepalm.gif'},
+  {'label':'Meal',     'key':'images/cats/meal.gif'},
+  {'label':'Banjo',    'key':'images/cats/banjo.gif'},
+  {'label':'Groom',    'key':'images/cats/groom.gif'},
+  {'label':'Gift',     'key':'images/cats/gift.gif'},
+  {'label':'Knead',    'key':'images/cats/knead.gif'},
+  {'label':'Love',     'key':'images/cats/love.gif'},
+  {'label':'Fly',      'key':'images/cats/fly.gif'},
+  {'label':'Popcorn',  'key':'images/cats/popcorn.gif'},
+  {'label':'Drink',    'key':'images/cats/drink.gif'},
   {'label':'Dogs', 'key':'dogs','rgItemType':List.ListProps.Type.TITLE},
-  {'label':'Ball',      'key': 'dogs\\ball.png'},
-  {'label':'Barbell',   'key': 'dogs\\barbell.png'},
-  {'label':'Bark',      'key': 'dogs\\bark.png'},
-  {'label':'Birthday',  'key': 'dogs\\birthday.png'},
-  {'label':'Bows',      'key': 'dogs\\bows.png'},
-  {'label':'Boxer',     'key': 'dogs\\boxer.png'},
-  {'label':'Chihuahua', 'key': 'dogs\\chihuahua_bone.png'},
-  {'label':'Cocktail',  'key': 'dogs\\cocktail.png'},
-  {'label':'Corgi',     'key': 'dogs\\corgi.png'},
-  {'label':'Dachshund', 'key': 'dogs\\dachshund.png'},
-  {'label':'Dalmatian', 'key': 'dogs\\dalmatian.png'},
-  {'label':'Einstein',  'key': 'dogs\\einstein.png'},
-  {'label':'Fitness',   'key': 'dogs\\fitness.png'},
-  {'label':'Haski',     'key': 'dogs\\haski.png'},
-  {'label':'Hulahoop',  'key': 'dogs\\hulahoop.png'},
-  {'label':'Labrador',  'key': 'dogs\\labrador.png'},
-  {'label':'Pilot',     'key': 'dogs\\pilot.png'},
-  {'label':'Poodle',    'key': 'dogs\\poodle.png'},
-  {'label':'Pug',       'key': 'dogs\\pug.png'},
-  {'label':'Rich',      'key': 'dogs\\rich.png'},
-  {'label':'Russel',    'key': 'dogs\\russel.png'},
-  {'label':'Sharpei',   'key': 'dogs\\sharpei.png'},
-  {'label':'Shepherd',  'key': 'dogs\\shepherd.png'},
-  {'label':'Stbernard', 'key': 'dogs\\stbernard.png'}
+  {'label':'Ball',      'key': 'images/dogs/ball.png'},
+  {'label':'Barbell',   'key': 'images/dogs/barbell.png'},
+  {'label':'Bark',      'key': 'images/dogs/bark.png'},
+  {'label':'Birthday',  'key': 'images/dogs/birthday.png'},
+  {'label':'Bows',      'key': 'images/dogs/bows.png'},
+  {'label':'Boxer',     'key': 'images/dogs/boxer.png'},
+  {'label':'Chihuahua', 'key': 'images/dogs/chihuahua_bone.png'},
+  {'label':'Cocktail',  'key': 'images/dogs/cocktail.png'},
+  {'label':'Corgi',     'key': 'images/dogs/corgi.png'},
+  {'label':'Dachshund', 'key': 'images/dogs/dachshund.png'},
+  {'label':'Dalmatian', 'key': 'images/dogs/dalmatian.png'},
+  {'label':'Einstein',  'key': 'images/dogs/einstein.png'},
+  {'label':'Fitness',   'key': 'images/dogs/fitness.png'},
+  {'label':'Haski',     'key': 'images/dogs/haski.png'},
+  {'label':'Hulahoop',  'key': 'images/dogs/hulahoop.png'},
+  {'label':'Labrador',  'key': 'images/dogs/labrador.png'},
+  {'label':'Pilot',     'key': 'images/dogs/pilot.png'},
+  {'label':'Poodle',    'key': 'images/dogs/poodle.png'},
+  {'label':'Pug',       'key': 'images/dogs/pug.png'},
+  {'label':'Rich',      'key': 'images/dogs/rich.png'},
+  {'label':'Russel',    'key': 'images/dogs/russel.png'},
+  {'label':'Sharpei',   'key': 'images/dogs/sharpei.png'},
+  {'label':'Shepherd',  'key': 'images/dogs/shepherd.png'},
+  {'label':'Stbernard', 'key': 'images/dogs/stbernard.png'}
 ];
 
-var DEFAULT_PET_ID = 'cats\\purr.gif';
+var DEFAULT_PET_ID = 'images/cats/purr.gif';
 var DEFAULT_RANDOM = 'none'
 var DEFAULT_TITLE  = 'Pets';
 
@@ -124,7 +124,7 @@ class Widget extends Component {
       // cats are from 20 to 43
       petId = PET_IDS[Math.floor(Math.random() * 24) + 20].key;
     } else if (petId.indexOf('.') === -1) {
-      petId = 'cats\\' + petId + '.gif';
+      petId = 'images/cats/' + petId + '.gif';
     }
     var title = config.title || DEFAULT_TITLE;
     this.setState({petId, random, title});
@@ -177,16 +177,38 @@ class Widget extends Component {
     }
   }
 
+  changeTitle = e => {
+    this.setState({title: e.target.value});
+  }
+
   renderConfiguration() {
     const {isConfiguring, petId, random, title} = this.state;
+
+    var idsWithIcons = [];
+    PET_IDS.forEach(item => {
+      idsWithIcons.push({
+        label: item.label,
+        key: item.key,
+        icon: item.key.startsWith('images') ? item.key : '',
+        rgItemType: item.rgItemType ? item.rgItemType : List.ListProps.Type.ITEM
+      });
+    })
     var pet = PET_IDS.find((id) => id.key === random) ||
         PET_IDS.find((id) => id.key === petId);
 
     return (
       <div>
+        <Input
+          size={InputSize.FULL}
+          placeholder="Enter widget title"
+          onChange={this.changeTitle}
+          value={title}
+        />
         <Select
-          data={PET_IDS}
+          size={InputSize.FULL}
+          data={idsWithIcons}
           selected={pet}
+          selectedLabel='Pet'
           onChange={this.changePetId}
           label="Choose pet"
         />
@@ -201,15 +223,15 @@ class Widget extends Component {
   render() {
     const {isConfiguring, petId, title} = this.state;
 
+    this.props.dashboardApi.setTitle(title);
+
     if (isConfiguring) {
       return this.renderConfiguration();
     }
 
-    const url = 'images\\' + petId;
-
     return (
       <div className={styles['pet-image']}>
-        <img className={styles['pet-image']} src={url}></img>
+        <img className={styles['pet-image']} src={petId}></img>
       </div>
     );
   }
