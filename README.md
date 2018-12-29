@@ -1,8 +1,9 @@
 # Pets
 
 This YouTrack Widget allows you to add one or several cats from
-[Cat Power Animated](http://iconka.com/en/downloads/cat-power-animated/) collection
-to your YouTrack Dashboard.
+[Cat Power Animated](http://iconka.com/en/downloads/cat-power-animated/) collection or 
+one or several dogs from [Tail Waggers](https://iconka.com/en/downloads/tail-waggers/) 
+collection to your YouTrack Dashboard.
 
 Requires YouTrack/Hub/Upsource 2018.2 or higher.
 
