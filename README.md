@@ -15,7 +15,7 @@ enter your devserver address.
 
 # Packing
 
-1. Just archive all content as ZIP file and it is ready to upload (/widgets)
+1. `npm run dist` to archive all content as ZIP file.
 
 # Licencing
 
